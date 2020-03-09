@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./styles/index.css";
+import Home from './components/presentational/Home';
+import WatchOnline from './components/presentational/WatchOnline';
+import NavBar from "./components/presentational/Navigation/NavBar";
+import MiniBar from './components/presentational/Navigation/MiniBar';
+import Footer from './components/presentational/Footer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <MiniBar />
+        <NavBar />
+      </div>
+      <Switch>
+        <Route exact path='/'>
+          <Home />
+        </Route>
+        <Route path='/watch-online'>
+          <WatchOnline />
+        </Route>
+      </Switch>
+      <div>
+        <Footer />
+      </div>
+    </Router>
   );
 }
-
 export default App;
